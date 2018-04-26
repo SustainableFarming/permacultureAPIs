@@ -1,0 +1,77 @@
+{
+    "Stand Persistence": null,
+    "_root_depth_cm": 30.48,
+    "_usda_hardiness_to": 11.0,
+    "Drought": "Tolerant",
+    "Texture": "Medium",
+    "id": "7007",
+    "Growth Rate": "Fast",
+    "Soil Type": "Sandy, Loamy, Silty, Clay",
+    "_companions": [
+        {
+            "Compatible": "Yes",
+            "Companion": "Corn",
+            "Notes": "Grows well with sweet corn."
+        }
+    ],
+    "Native to North America?": "No",
+    "Scientific name": "Sesamum indicum (S. orientale)",
+    "_to_spread_cm": 5.08,
+    "Notes": "Extremely hardy crop that requires little inputs. Exhibits a wide range of phenotypic variation, including a lots of variation in flowering and fruiting times. Self-pollinating. Tolerates soils with low fertility, but not in successive years. Commercial varieties of sesame require 90 to 120 frost-free days. Good drainage is very important. Most varieties are divided into shattering and non-shattering categories.",
+    "Seasonal Interest": "Spring-Fall",
+    "_soil_ph_from": 4.7,
+    "Bacteria-Fungal Ratio": "0.4:1-0.8:1",
+    "Flower Color": "Rose, White",
+    "Life Span": "Short",
+    "Wind Storm Damage": "Infrequent",
+    "Mowing": "Intolerant",
+    "_soil_ph_to": 8.7,
+    "Fungal Types": "Endomycorrhizal",
+    "_uses": [
+        {
+            "Use": "Food",
+            "Notes": "The seeds of S. indicum are a major international food product. They have numerous health benefits and are high in a number of minerals. They are commonly roasted, ground into flour, made into the paste \"tahini\" and are included in a large number of both sweet and savory food products. The leaves are sometimes smoked as a tobacco substitute. The stem ash is high in minerals and can be used as a nutritional salt. The leaves can be eaten raw or cooked. 70% of sesame yields go towards the production of sesame oil. It is a highly stable oil that resists rancidity due to its antioxidant content. It is eaten raw and for cooking and flavoring."
+        },
+        {
+            "Use": "Aromatics/Fragrance",
+            "Notes": "Sesame seeds are used in perfumes in Africa and parts of the flowers are used for cologne."
+        },
+        {
+            "Use": "Oil, Wax, Resin or Polish",
+            "Notes": "Sesame oil is used in soap and various cosmetic products. It has beneficial uses for the skin."
+        },
+        {
+            "Use": "Medicine",
+            "Notes": "Numerous medicinal uses, both in ethnobotanical medicine and modern pharmaceuticals."
+        },
+        {
+            "Use": "Biomass",
+            "Notes": "The dry plant stalks can be used as fuel. Additionally, research has found sesame oil to be a promising biofuel."
+        }
+    ],
+    "Root Type": "Tap, Fibrous Deep",
+    "Soil Moisture": "Moderate, Dry",
+    "Bloom Time": "Summer - ?",
+    "Fire Damage": "Intolerant",
+    "Animal Damage": null,
+    "Cold Injury": "Frequent",
+    "Soil Compaction": "Tolerant",
+    "_usda_hardiness_from": 9.0,
+    "Insect/Pest Damage": "Minor",
+    "Plant Category": "Herbaceous",
+    "_to_height_cm": 15.24,
+    "Flood": "Sensitive",
+    "_from_spread_cm": 2.54,
+    "Growing Season": "Warm",
+    "_from_height_cm": 7.62,
+    "Species": "indicum",
+    "Disease Issues": "Minor",
+    "Salt": "Moderate",
+    "Fruit Time": "Summer - ?",
+    "Common name": "Sesame",
+    "Family": "Pedaliaceae",
+    "Form": "Upright",
+    "Fruit Type": "Capsule",
+    "Sun": "Full Sun",
+    "Plant Type": "Annual"
+}
