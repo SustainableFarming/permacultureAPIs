@@ -59,10 +59,10 @@ lineReader.on("close", function() {
     
             // drop existing
             console.log("dropping graph...");
-            await execute("g.E().drop()");
-            await execute("g.V().drop()");
-            console.log("dropped graph.");
-    
+            //await execute("g.E().drop()");
+            //await execute("g.V().drop()");
+            console.log("dropped graph.");                
+
             // write each plant
             let count = 0;
             for (let plant of plants) {
@@ -70,19 +70,60 @@ lineReader.on("close", function() {
                     .property("id", "${plant.id}")
                     .property("commonName", "${escape(plant['Common name'])}")
                     .property("rootType", "${escape(plant['Root Type'])}")
-                    .property("soilPhFrom", "${escape(plant._soil_ph_from)}")
-                    .property("soilPhTo", "${escape(plant._soil_ph_to)}")`;
+                    .property("standPersistence", "${escape(plant['Stand Persistence'])}")
+                    .property("rootDepth", "${escape(plant['_root_depth_cm'])}")
+                    .property("usdaZoneFrom", "${escape(plant['_usda_hardiness_from'])}")
+                    .property("usdaZoneTo", "${escape(plant['_usda_hardiness_to'])}")
+                    .property("drought", "${escape(plant['Drought'])}")
+                    .property("texture", "${escape(plant['Texture'])}")
+                    .property("growthRate", "${escape(plant['Growth Rate'])}")
+                    .property("soilType", "${escape(plant['Soil Type'])}")
+                    .property("nativeToNAmer", "${escape(plant['Native to North America?'])}")
+                    .property("scientificName", "${escape(plant['Scientific name'])}")
+                    .property("spreadTo", "${escape(plant['_to_spread_cm'])}")
+                    .property("spreadFrom", "${escape(plant['_from_spread_cm'])}")
+                    .property("notes", "${escape(plant['Notes'])}")
+                    .property("seasonalInterest", "${escape(plant['Seasonal Interest'])}")
+                    .property("bacteriaFungalRatio", "${escape(plant['Bacteria-Fungal Ratio'])}")
+                    .property("flowerColor", "${escape(plant['Flower Color'])}")
+                    .property("lifeSpan", "${escape(plant['Life Span'])}")
+                    .property("windStormDamage", "${escape(plant['Wind Storm Damage'])}")
+                    .property("mowing", "${escape(plant['Mowing'])}")
+                    .property("fungalTypes", "${escape(plant['Fungal Types'])}")
+                    .property("soilMoisture", "${escape(plant['Soil Moisture'])}")
+                    .property("bloomTime", "${escape(plant['Bloom Time'])}")
+                    .property("fireDamage", "${escape(plant['Fire Damage'])}")
+                    .property("animalDamage", "${escape(plant['Animal Damage'])}")
+                    .property("coldInjury", "${escape(plant['Cold Injury'])}")
+                    .property("soilCompaction", "${escape(plant['Soil Compaction'])}")
+                    .property("pestDamage", "${escape(plant['Insect/Pest Damage'])}")
+                    .property("plantCategory", "${escape(plant['Plant Category'])}")
+                    .property("heightFrom", "${escape(plant['_from_height_cm'])}")
+                    .property("heightTo", "${escape(plant['_to_height_cm'])}")
+                    .property("flood", "${escape(plant['Flood'])}")
+                    .property("growingSeason", "${escape(plant['Growing Season'])}")
+                    .property("diseaseIssues", "${escape(plant['Disease Issues'])}")
+                    .property("salt", "${escape(plant['Salt'])}")
+                    .property("fruitTime", "${escape(plant['Fruit Time'])}")
+                    .property("form", "${escape(plant['Form'])}")
+                    .property("fruitType", "${escape(plant['Fruit Type'])}")
+                    .property("sun", "${escape(plant['Sun'])}")
+                    .property("plantType", "${escape(plant['Plant Type'])}")
+                    .property("soilPhFrom", "${escape(plant['_soil_ph_from'])}")
+                    .property("soilPhTo", "${escape(plant['_soil_ph_to'])}")`;
                 count++;
                 if (count % 100 === 0) console.log(`wrote ${count} plant(s)...`);
-                await execute(query);
+                //await execute(query);
             }
             console.log(`wrote ${plants.length} plant(s).`);
 
-            // add compatibleWith / incompatibleWith
+            // add compatibleWith / incompatibleWith / uses
+            const uses = [];
             for (let plant of plants) {
                 plant.compatibleWith = [];
                 plant.incompatibleWith = [];
                 plant.plantedWith = [];
+                plant.uses = [];
                 if (plant._companions) {
                     for (let companion of plant._companions) {
                         const found = plants.find(p => p["Common name"] === companion.Companion);
@@ -103,6 +144,12 @@ lineReader.on("close", function() {
                         }
                     }
                 }
+                if (plant._uses) {
+                    for (let use of plant._uses) {
+                        if (!uses.contains(use.Use)) uses.push(use.Use);
+                        plant.uses.push( 50000 + uses.indexOf(use.Use) );
+                    }
+                }
             }
 
             // add plantedWith
@@ -117,7 +164,7 @@ lineReader.on("close", function() {
                             const sec = plants.find(p => p.id === poly[six].ID);
                             if (pri && sec) {
                                 const pid = Number(pri.ID);
-                                const sid = Number(sec.ID);
+                                const sid = Number(sec.id);
                                 if (pid !== sid && !pri.plantedWith.contains(sid)) pri.plantedWith.push(sid);    
                             }
                         }
@@ -125,20 +172,33 @@ lineReader.on("close", function() {
                 }
             }
 
+            // write uses
+            for (let i = 0; i < uses.length; i++) {
+                const query = `g.addV("use")
+                .property("id", "${50000 + i}")
+                .property("name", "${uses[i]}")`;
+                console.log(`use: ${uses[i]}`);
+                //await execute(query);
+            }
+            console.log(`wrote ${uses.length} uses...`);
+
             // write relationships
             count = 0;
             for (let plant of plants) {
-                for (let other of plant.compatibleWith) {
-                    await execute(`g.V('${plant.id}').addE('compatibleWith').to(g.V('${other.id}'))`);
+                for (let other_id of plant.compatibleWith) {
+                    //await execute(`g.V('${plant.id}').addE('compatibleWith').to(g.V('${other_id}'))`);
                 }
-                for (let other of plant.incompatibleWith) {
-                    await execute(`g.V('${plant.id}').addE('incompatibleWith').to(g.V('${other.id}'))`);
+                for (let other_id of plant.incompatibleWith) {
+                    //await execute(`g.V('${plant.id}').addE('incompatibleWith').to(g.V('${other_id}'))`);
                 }
-                for (let other of plant.plantedWith) {
-                    await execute(`g.V('${plant.id}').addE('plantedWith').to(g.V('${other.id}'))`);
+                for (let other_id of plant.plantedWith) {
+                    await execute(`g.V('${plant.id}').addE('plantedWith').to(g.V('${other_id}'))`);
                 }
-                //const total = plant.compatibleWith.length + plant.incompatibleWith.length + plant.plantedWith;
-                //if (total > 0) console.log(`${plant["Common name"]}: ${total} relationships`);
+                for (let use_id of plant.uses) {
+                    //await execute(`g.V('${plant.id}').addE('usedFor').to(g.V('${use_id}'))`);
+                }
+                const total = plant.compatibleWith.length + plant.incompatibleWith.length + plant.plantedWith + uses;
+                if (total > 0) console.log(`${plant["Common name"]}: ${total} relationships`);
                 count++;
                 if (count % 100 === 0) console.log(`wrote ${count} plant relationships...`);
             }

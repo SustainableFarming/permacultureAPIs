@@ -1,6 +1,8 @@
 
 const Optimizer = require("./lib/Optimizer");
+const PlantDao = require("./lib/PlantDao");
 
+/*
 const always = [
     {
         "id": "1",
@@ -45,19 +47,33 @@ const maybe = [
         "rootDepth": 36
     }
 ];
+*/
 
+(async () => {
+    const dao = new PlantDao();
+    dao.connect();
 
-const optimizer = new Optimizer(always, maybe, {
-    usdaZone: 10
-}, {
-    compatibleWith: 1000,
-    incompatibleWith: -10000,
-    plantedWith: 400,
-    usdaZoneGood: 200,          // this is a perfect score, could be partial
-    usdaZoneBad: -10000,        // this is a perfect bad, could be partial
-    rootDepth: -200,            // this is for a single collision
-    rootDepthRange: 0.1         // this is the percentage above/below the root depth to consider a collision
-});
-for (let scored of optimizer.score()) {
-    console.log(`${scored.score}: ${JSON.stringify(scored.plants)}: ${JSON.stringify(scored.applied)}\n`);
-}
+    const plants = await dao.get("2901");
+    const always = [ plants[0] ];
+    plants.splice(0, 1);
+
+    const optimizer = new Optimizer(always, plants, {
+        usdaZone: 3
+    }, {
+        compatibleWith: 1000,
+        incompatibleWith: -10000,
+        plantedWith: 400,
+        usdaZoneGood: 200,          // this is a perfect score, could be partial
+        usdaZoneBad: -10000,        // this is a perfect bad, could be partial
+        rootDepth: -200,            // this is for a single collision
+        rootDepthRange: 0.1         // this is the percentage above/below the root depth to consider a collision
+    });
+    const start = Date.now();
+    const total = optimizer.score();
+    const top5 = optimizer.score().slice(0, 4);
+    for (let scored of top5) {
+        console.log(`${scored.score}: ${JSON.stringify(scored.plants)}: ${JSON.stringify(scored.applied)}\n`);
+    }
+    console.log(`total: ${total.length}, after: ${((Date.now() - start) / 1000)} secs`);
+
+})();

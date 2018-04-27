@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.16.3",
+    "gremlin": "^2.6.0",
     "lerp": "^1.0.3",
     "lodash.combinations": "^18.1.16",
     "save": "^2.3.2"

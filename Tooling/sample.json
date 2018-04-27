@@ -1,77 +1,55 @@
 {
-    "Stand Persistence": null,
-    "_root_depth_cm": 30.48,
-    "_usda_hardiness_to": 11.0,
-    "Drought": "Tolerant",
-    "Texture": "Medium",
-    "id": "7007",
-    "Growth Rate": "Fast",
-    "Soil Type": "Sandy, Loamy, Silty, Clay",
-    "_companions": [
-        {
-            "Compatible": "Yes",
-            "Companion": "Corn",
-            "Notes": "Grows well with sweet corn."
-        }
-    ],
+    "Stand Persistence": "Long",
+    "Animal Damage": null,
+    "Minimum Root Depth": null,
+    "Growing Season": "Cool-Warm",
+    "_usda_hardiness_to": 8.0,
+    "Drought": "Intolerant",
+    "Texture": null,
+    "id": "1700",
+    "Growth Rate": "Moderate",
+    "Soil Type": "Loamy",
     "Native to North America?": "No",
-    "Scientific name": "Sesamum indicum (S. orientale)",
-    "_to_spread_cm": 5.08,
-    "Notes": "Extremely hardy crop that requires little inputs. Exhibits a wide range of phenotypic variation, including a lots of variation in flowering and fruiting times. Self-pollinating. Tolerates soils with low fertility, but not in successive years. Commercial varieties of sesame require 90 to 120 frost-free days. Good drainage is very important. Most varieties are divided into shattering and non-shattering categories.",
-    "Seasonal Interest": "Spring-Fall",
-    "_soil_ph_from": 4.7,
-    "Bacteria-Fungal Ratio": "0.4:1-0.8:1",
-    "Flower Color": "Rose, White",
-    "Life Span": "Short",
-    "Wind Storm Damage": "Infrequent",
+    "Scientific name": "Allium giganteum",
+    "_to_spread_cm": 60.96,
+    "Notes": "Other common name- \"Giant Allium\". Tolerates summer drought, but requires moist growing conditions in spring. Low toxicity if eaten. Flower is an umbel. Many other Allium species with different bloom times and colors.",
+    "Seasonal Interest": "Summer",
+    "Bacteria-Fungal Ratio": null,
+    "Bloom Time": "Late Spring - Summer",
+    "Life Span": "Short-Lived Perennial",
+    "Wind Storm Damage": "Minor",
     "Mowing": "Intolerant",
-    "_soil_ph_to": 8.7,
-    "Fungal Types": "Endomycorrhizal",
+    "Fungal Types": null,
+    "Common name": "Ornamental Onion",
+    "Root Type": "Bulb",
+    "Soil Moisture": "Moderate",
+    "Fire Damage": "Infrequent",
+    "Fruit Time": null,
+    "Soil Compaction": "Intolerant",
+    "Soil pH": "Tolerant",
+    "_usda_hardiness_from": 4.0,
+    "Insect/Pest Damage": null,
+    "Plant Category": "Herbaceous",
+    "_to_height_cm": 121.92,
+    "Flood": "Intolerant",
+    "_from_spread_cm": 10.16,
+    "Flower Color": "Pink, Purple",
+    "_from_height_cm": 91.44,
+    "Disease Issues": "Deer, Rabbits",
+    "Salt": null,
     "_uses": [
         {
+            "Use": "Cut Flower",
+            "Notes": "Makes a good cut flower."
+        },
+        {
             "Use": "Food",
-            "Notes": "The seeds of S. indicum are a major international food product. They have numerous health benefits and are high in a number of minerals. They are commonly roasted, ground into flour, made into the paste \"tahini\" and are included in a large number of both sweet and savory food products. The leaves are sometimes smoked as a tobacco substitute. The stem ash is high in minerals and can be used as a nutritional salt. The leaves can be eaten raw or cooked. 70% of sesame yields go towards the production of sesame oil. It is a highly stable oil that resists rancidity due to its antioxidant content. It is eaten raw and for cooking and flavoring."
-        },
-        {
-            "Use": "Aromatics/Fragrance",
-            "Notes": "Sesame seeds are used in perfumes in Africa and parts of the flowers are used for cologne."
-        },
-        {
-            "Use": "Oil, Wax, Resin or Polish",
-            "Notes": "Sesame oil is used in soap and various cosmetic products. It has beneficial uses for the skin."
-        },
-        {
-            "Use": "Medicine",
-            "Notes": "Numerous medicinal uses, both in ethnobotanical medicine and modern pharmaceuticals."
-        },
-        {
-            "Use": "Biomass",
-            "Notes": "The dry plant stalks can be used as fuel. Additionally, research has found sesame oil to be a promising biofuel."
+            "Notes": "The leaves can be eaten raw or cooked.  The flowers can be eaten raw or used as a garnish on salads."
         }
     ],
-    "Root Type": "Tap, Fibrous Deep",
-    "Soil Moisture": "Moderate, Dry",
-    "Bloom Time": "Summer - ?",
-    "Fire Damage": "Intolerant",
-    "Animal Damage": null,
-    "Cold Injury": "Frequent",
-    "Soil Compaction": "Tolerant",
-    "_usda_hardiness_from": 9.0,
-    "Insect/Pest Damage": "Minor",
-    "Plant Category": "Herbaceous",
-    "_to_height_cm": 15.24,
-    "Flood": "Sensitive",
-    "_from_spread_cm": 2.54,
-    "Growing Season": "Warm",
-    "_from_height_cm": 7.62,
-    "Species": "indicum",
-    "Disease Issues": "Minor",
-    "Salt": "Moderate",
-    "Fruit Time": "Summer - ?",
-    "Common name": "Sesame",
-    "Family": "Pedaliaceae",
     "Form": "Upright",
     "Fruit Type": "Capsule",
     "Sun": "Full Sun",
-    "Plant Type": "Annual"
+    "Cold Injury": "Minor",
+    "Plant Type": "Perennial"
 }

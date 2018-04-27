@@ -172,15 +172,15 @@ module.exports = class Scoring {
             for (const sec of depths) {
                 if (pri === sec) {
                     // same; ignore
-                } else if (pri.high < sec.high && pri.low < sec.low) {
-                    console.log(`shallower ${pri.id} ${pri.low}-${pri.high} vs. ${sec.id} ${sec.low}-${sec.high}`);
-                } else if (pri.high > sec.high && pri.low > sec.low) {
-                    console.log(`deeper ${pri.id} ${pri.low}-${pri.high} vs. ${sec.id} ${sec.low}-${sec.high}`);
+                } else if (pri.high > sec.low) {
+                    //console.log(`deeper ${pri.id} ${pri.low}-${pri.high} vs. ${sec.id} ${sec.low}-${sec.high}`);
+                } else if (pri.low < sec.high) {
+                    //console.log(`shallower ${pri.id} ${pri.low}-${pri.high} vs. ${sec.id} ${sec.low}-${sec.high}`);
                 } else if (pri.id < sec.id) {
-                    console.log(`collision ${pri.id} ${pri.low}-${pri.high} vs. ${sec.id} ${sec.low}-${sec.high}`);
+                    //console.log(`collision ${pri.id} ${pri.low}-${pri.high} vs. ${sec.id} ${sec.low}-${sec.high}`);
                     if (!collisions.contains(`${pri.id}:${sec.id}`)) collisions.push(`${pri.id}:${sec.id}`);
                 } else if (pri.id > sec.id) {
-                    console.log(`collision ${pri.id} ${pri.low}-${pri.high} vs. ${sec.id} ${sec.low}-${sec.high}`);
+                    //console.log(`collision ${pri.id} ${pri.low}-${pri.high} vs. ${sec.id} ${sec.low}-${sec.high}`);
                     if (!collisions.contains(`${sec.id}:${pri.id}`)) collisions.push(`${sec.id}:${pri.id}`);
                 }    
             }
