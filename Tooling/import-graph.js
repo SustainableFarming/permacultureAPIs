@@ -59,8 +59,8 @@ lineReader.on("close", function() {
     
             // drop existing
             console.log("dropping graph...");
-            //await execute("g.E().drop()");
-            //await execute("g.V().drop()");
+            await execute("g.E().drop()");
+            await execute("g.V().drop()");
             console.log("dropped graph.");                
 
             // write each plant
@@ -113,7 +113,7 @@ lineReader.on("close", function() {
                     .property("soilPhTo", "${escape(plant['_soil_ph_to'])}")`;
                 count++;
                 if (count % 100 === 0) console.log(`wrote ${count} plant(s)...`);
-                //await execute(query);
+                await execute(query);
             }
             console.log(`wrote ${plants.length} plant(s).`);
 
@@ -178,7 +178,7 @@ lineReader.on("close", function() {
                 .property("id", "${50000 + i}")
                 .property("name", "${uses[i]}")`;
                 console.log(`use: ${uses[i]}`);
-                //await execute(query);
+                await execute(query);
             }
             console.log(`wrote ${uses.length} uses...`);
 
@@ -186,16 +186,16 @@ lineReader.on("close", function() {
             count = 0;
             for (let plant of plants) {
                 for (let other_id of plant.compatibleWith) {
-                    //await execute(`g.V('${plant.id}').addE('compatibleWith').to(g.V('${other_id}'))`);
+                    await execute(`g.V('${plant.id}').addE('compatibleWith').to(g.V('${other_id}'))`);
                 }
                 for (let other_id of plant.incompatibleWith) {
-                    //await execute(`g.V('${plant.id}').addE('incompatibleWith').to(g.V('${other_id}'))`);
+                    await execute(`g.V('${plant.id}').addE('incompatibleWith').to(g.V('${other_id}'))`);
                 }
                 for (let other_id of plant.plantedWith) {
                     await execute(`g.V('${plant.id}').addE('plantedWith').to(g.V('${other_id}'))`);
                 }
                 for (let use_id of plant.uses) {
-                    //await execute(`g.V('${plant.id}').addE('usedFor').to(g.V('${use_id}'))`);
+                    await execute(`g.V('${plant.id}').addE('usedFor').to(g.V('${use_id}'))`);
                 }
                 const total = plant.compatibleWith.length + plant.incompatibleWith.length + plant.plantedWith + uses;
                 if (total > 0) console.log(`${plant["Common name"]}: ${total} relationships`);
